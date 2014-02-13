@@ -1,6 +1,11 @@
 /* Prevents navbar from overlapping page */
 body {
     padding-top: 70px;
+    background-color: #f5e79e !important;
+}
+
+.title {
+    color: orange !important;
 }
 
 .fixlink {
