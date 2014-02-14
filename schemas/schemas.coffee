@@ -10,6 +10,11 @@ Section = new Schema(
   htmlId: String
 )
 
+ClassGrade = new Schema(
+  grade: String
+  credits: String
+)
+
 Section = mongoose.model 'Section', Section
 
 module.exports =

@@ -1,3 +1,4 @@
+gpa = require './routes/gpa'
 express = require 'express'
 routes = require './routes'
 section = require './routes/section'
@@ -21,9 +22,11 @@ db.once 'open', ->
 
 
 #set main layout
-app.set 'layout', 'layouts/main'
+#app.set 'layout', 'layouts/main'
+app.set 'layout', 'layouts/gpaMain'
 #expose templates to all views
 app.set 'partials',
+  headGPA: 'partials/headGPA'
   head: 'partials/head',
   navbar: 'partials/navbar',
   scripts: 'partials/scripts'
@@ -51,6 +54,7 @@ app.configure 'development', ->
   app.use express.errorHandler()
 
 app.get '/', routes.index
+app.get '/gpa', routes.index
 app.get '/section/:id', section.getById
 app.post '/section', section.create
 app.get '/sections', section.findAll
