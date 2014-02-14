@@ -1,10 +1,119 @@
 <div class="jumbotron">
-    <h1 class="title">{{titleGPA}}</h1>
-    <p>{{ descriptionGPA }}</p>
+    <h1 class="title">{{title}}</h1>
+    <p>{{ description }}</p>
 </div>
+<body>
 
-<script>
+<form method="post" action="/gpa">
+    <label>Grade:
+        <select name="firstG" id="firstG">
+            <option value="0" selected="selected">none</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="F">F</option>
+        </select></label>
+    <label>Credits:
+        <select name="first" id="first">
+            <option value="0" selected="selected">none</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+    </label>
+    <br/>
 
-</script>
+    <label>Grade:
+        <select name="secondG" id="secondG">
+            <option value="0" selected="selected">none</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="F">F</option>
+        </select></label>
+    <label>Credits:
+        <select name="second" id="second">
+            <option value="0" selected="selected">none</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+    </label>
+    <br/>
 
-<div id="content"></div>
+    <label>Grade:
+        <select name="thirdG" id="thirdG">
+            <option value="0" selected="selected">none</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="F">F</option>
+        </select></label>
+    <label>Credits:
+        <select name="third" id="third">
+            <option value="0" selected="selected">none</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+    </label>
+    <br/>
+
+    <label>Grade:
+        <select name="fourthG" id="fourthG">
+            <option value="0" selected="selected">none</option>
+            <option value="A">A</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B">B</option>
+            <option value="B-">B-</option>
+            <option value="C+">C+</option>
+            <option value="C">C</option>
+            <option value="C-">C-</option>
+            <option value="D+">D+</option>
+            <option value="D">D</option>
+            <option value="F">F</option>
+        </select></label>
+    <label>Credits:
+        <select name="fourth" id="fourth">
+            <option value="0" selected="selected">none</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+    </label>
+    <br/><br/>
+    <input type="button" id="gpaCalc" value="Calculate GPA"/>
+    <br/><br/></form>
+</body>
+</html>
+

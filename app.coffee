@@ -1,4 +1,3 @@
-gpa = require './routes/gpa'
 express = require 'express'
 routes = require './routes'
 section = require './routes/section'
@@ -22,14 +21,13 @@ db.once 'open', ->
 
 
 #set main layout
-#app.set 'layout', 'layouts/main'
-app.set 'layout', 'layouts/gpaMain'
+app.set 'layout', 'layouts/main'
 #expose templates to all views
 app.set 'partials',
-  headGPA: 'partials/headGPA'
   head: 'partials/head',
   navbar: 'partials/navbar',
   scripts: 'partials/scripts'
+
 
 app.engine 'html', require('hogan-express')
 app.enable 'view cache'
@@ -54,7 +52,9 @@ app.configure 'development', ->
   app.use express.errorHandler()
 
 app.get '/', routes.index
-app.get '/gpa', routes.index
+app.get '/gpa', routes.gpa
+#app.get '/gpa', gpa.formResponse
+#app.post '/gpa', gpa.postResponse
 app.get '/section/:id', section.getById
 app.post '/section', section.create
 app.get '/sections', section.findAll
