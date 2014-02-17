@@ -5,18 +5,20 @@ Created by mart2967 on 1/30/14.
 class AppRouter extends Backbone.Router
   routes:
     '': 'index'
-    '/gpa': 'gpa'
+    'gpa': 'gpa'
 
   gpa: ->
+    console.log 'inside gpa'
     gpaVar1 = new value({grade: '3', credits: '1'})
     gpaVar2 = new value({grade: '2', credits: '3'})
     gpaVar3 = new value({grade: '1', credits: '2'})
     gpaVar4 = new value({grade: '4', credits: '4'})
     gpaArr = [gpaVar1, gpaVar2, gpaVar3, gpaVar4]
-    $('#
-        return
+    $('#GPAContent').html new window.valueCollectionView(collection: gpaArr).$el
+    return
 
   index: ->
+    console.log 'inside index'
     sectionList = new window.SectionCollection()
     sectionList.fetch success: ->
       $('#content').html new window.SectionCollectionView(collection: sectionList).$el

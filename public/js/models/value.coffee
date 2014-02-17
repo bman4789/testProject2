@@ -5,5 +5,5 @@
       console.log 'Initializing a Value'
 
     defaults:
-      grade: ""
-      credits: ""
+      grade: 'a'
+      credits: 'a'

@@ -4,7 +4,7 @@
 ###
 
 
-headerString='<!DOCTYPE html>\n
+###headerString='<!DOCTYPE html>\n
 <html>\n
 <head>\n
     <title>GPA Calculator</title>\n
@@ -131,7 +131,7 @@ bodyString='<form method="post" action="/gpa">\n
 
 footerString='
 </body>\n
-</html>\n'
+</html>\n'###
 
 
 
@@ -142,6 +142,6 @@ footerString='
 
 
 
-
+###
 module.exports.calcGPA = calcGPA
-module.exports.gradeToFloat = gradeToFloat
+module.exports.gradeToFloat = gradeToFloat###

@@ -53,8 +53,6 @@ app.configure 'development', ->
 
 app.get '/', routes.index
 app.get '/gpa', routes.gpa
-#app.get '/gpa', gpa.formResponse
-#app.post '/gpa', gpa.postResponse
 app.get '/section/:id', section.getById
 app.post '/section', section.create
 app.get '/sections', section.findAll
