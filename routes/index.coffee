@@ -8,7 +8,8 @@ exports.index = (req, res) ->
 exports.gpa = (req, res) ->
   res.locals = {
     title: 'GPA Calculator',
-    description: 'Calculate your GPA'
+    description: 'Calculate your GPA',
+    value: 0
   }
   res.render 'gpa'
 
