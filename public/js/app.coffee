@@ -14,7 +14,8 @@ class AppRouter extends Backbone.Router
     gpaVar3 = new value({grade: '1', credits: '2'})
     gpaVar4 = new value({grade: '4', credits: '4'})
     gpaArr = [gpaVar1, gpaVar2, gpaVar3, gpaVar4]
-    $('#GPAContent').html new window.valueCollectionView(collection: gpaArr).$el
+    coll = new window.valueCollection(gpaArr)
+    $('#GPAContent').html new window.valueCollectionView(collection: coll).$el
     return
 
   index: ->

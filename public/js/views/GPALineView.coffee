@@ -1,5 +1,5 @@
 class window.GPALineView extends Backbone.View
-  tagName: ''
+  tagName: 'div'
 
   #Defining the template html explicitly rather than selecting it from a hidden element
   #Convinient for small snippets like this, not for anything much bigger
