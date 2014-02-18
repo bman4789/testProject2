@@ -2,7 +2,13 @@
     <h1 class="title">{{title}}</h1>
     <p>{{ description }}</p>
 </div>
-<div id="GPAContent"></div>
+<div id="GPABody" type="text/html">
+    <p>Select your grades and corresponding credits.</p>
+    <form id="GPAContent" method="post" action="/gpa">
 
-
-
+    </form>
+    <br/><br/>
+    <input type="submit" id="gpaCalc" value="Calculate GPA"/>
+    <button class="AddRow">Add Row</button>
+    <br/><br/>
+</div>
