@@ -1,8 +1,10 @@
 class window.GPALineView extends Backbone.View
   tagName: 'div'
+  events:
+    'change': 'change'
+    'click button.edit': 'editSection'
+    'click button.save': 'saveSection'
 
-  #Defining the template html explicitly rather than selecting it from a hidden element
-  #Convinient for small snippets like this, not for anything much bigger
   template: _.template $('#OneClass').html()
 
   initialize: ->
@@ -10,4 +12,18 @@ class window.GPALineView extends Backbone.View
 
   render: ->
     @$el.html @template(@model.toJSON())
+    this
+
+  change: (event) ->
+    console.log 'changed'
+    change = {}
+    change[event.target.name] = event.target.value #uses name attribute from html
+    @model.set(change)
+
+  editSection: ->
+    @$el.html @editGPATemplate(@model.toJSON())
+    this
+
+  saveSection: ->
+    @$el.html @saveGPATemplate(@model.toJSON())
     this

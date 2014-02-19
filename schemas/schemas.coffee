@@ -12,7 +12,7 @@ Section = new Schema(
 
 ClassGrade = new Schema(
   grade: String
-  credits: String
+  credits: Number
 )
 
 Section = mongoose.model 'Section', Section

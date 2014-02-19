@@ -6,4 +6,4 @@
 
     defaults:
       grade: 'F'
-      credits: '0'
+      credits: 0
