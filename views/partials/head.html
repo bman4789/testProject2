@@ -22,7 +22,14 @@
     <textarea name="body" class="form-control" rows="3"><%= body %></textarea>
 </script>
 
-<script id="OneClass" type="text/html">
+<script id="GPAEdit" type="text/html">
+    <p>Grade: <%= grade %></p>
+    <p>Credits: <%= credits %></p>
+    <button class="edit">Edit</button>
+</script>
+
+
+<script id="GPASave" type="text/html">
     <label>Grade:
         <select name="grade" id="grade">
             <option value="0">none</option>
@@ -48,9 +55,10 @@
             <option>5</option>
         </select>
     </label>
+    <button class="save">Save</button>
 </script>
 
 <script id="GPAbuttons" type="text/html">
-    <button class="edit">Edit</button>
+
     <button class="addRow">Add Class</button>
 </script>

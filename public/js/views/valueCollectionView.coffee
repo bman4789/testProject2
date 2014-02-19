@@ -1,11 +1,7 @@
 class window.valueCollectionView extends Backbone.View
   template: _.template $('#GPAbuttons').html()
-  ###editGPATemplate : _.template $('#GPAEdit').html()
-  saveGPATemplate : _.template $('#GPASave').html()###
   events:
     'click button.addRow': 'addRow'
-
-
 
   initialize: ->
     @render()
@@ -21,11 +17,9 @@ class window.valueCollectionView extends Backbone.View
     @$el.append @template()
     this
 
-
-
   addRow: ->
     console.log 'some text'
-    view = new value()
+    view = new GPALineView(model: new value())
     @collection.add view
     $('#GPADropDowns').append view.el
     this

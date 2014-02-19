@@ -16,7 +16,9 @@ ClassGrade = new Schema(
 )
 
 Section = mongoose.model 'Section', Section
+ClassGrade = mongoose.model 'ClassGrade', ClassGrade
 
 module.exports =
   Section : Section
+  ClassGrade : ClassGrade
 

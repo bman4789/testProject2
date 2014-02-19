@@ -9,13 +9,14 @@ class AppRouter extends Backbone.Router
 
   gpa: ->
     console.log 'inside gpa'
-    gpaVar1 = new value()
-    gpaVar2 = new value()
-    gpaVar3 = new value()
-    gpaVar4 = new value()
-    gpaArr = [gpaVar1, gpaVar2, gpaVar3, gpaVar4]
-    coll = new window.valueCollection(gpaArr)
-    $('#GPAContent').append new window.valueCollectionView(collection: coll).$el
+    coll = new window.valueCollection()
+    console.log 'line 13'
+    coll.fetch
+      success: ->
+        console.log "in success"
+        $('#GPAContent').append new window.valueCollectionView(collection: coll).$el
+      error: ->
+        console.log "error"
     return
 
   index: ->

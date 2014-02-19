@@ -1,17 +1,18 @@
 class window.GPALineView extends Backbone.View
   tagName: 'div'
+  editGPATemplate : _.template $('#GPAEdit').html()
+  saveGPATemplate : _.template $('#GPASave').html()
   events:
     'change': 'change'
     'click button.edit': 'editSection'
     'click button.save': 'saveSection'
 
-  template: _.template $('#OneClass').html()
 
   initialize: ->
     @render()
 
   render: ->
-    @$el.html @template(@model.toJSON())
+    @$el.html @editGPATemplate(@model.toJSON())
     this
 
   change: (event) ->
@@ -21,9 +22,15 @@ class window.GPALineView extends Backbone.View
     @model.set(change)
 
   editSection: ->
-    @$el.html @editGPATemplate(@model.toJSON())
+    @$el.html @saveGPATemplate(@model.toJSON())
     this
 
   saveSection: ->
-    @$el.html @saveGPATemplate(@model.toJSON())
+    console.log 'saving...'
+    @model.save {},
+      success: ->
+        console.log 'saved'
+      error: ->
+        console.log 'error'
+    @render()
     this
