@@ -1,19 +1,26 @@
 class window.valueCollectionView extends Backbone.View
-  tagName: 'div'
-  template: _.template $('#GPAHead').html()
-  footTemplate: _.template $('#GPAFoot').html()
-
+  template: _.template $('#GPAbuttons').html()
+  events:
+    'click button.AddRow': 'AddRow'
 
   initialize: ->
     @render()
 
   render: ->
-    @$el.html @template()
+    @$el.html ''
+    $('#GPADropDowns').html ''
     _.each @collection.models, ((item) ->
       console.log item
       view = new GPALineView(model: item)
-      @$el.append view.el
+      $('#GPADropDowns').append view.el
       return
     ), this
+    @$el.append @template()
     this
-    @$el.append @footTemplate
+
+
+  AddRow: ->
+    console.log 'some text'
+    @collection.add new value()
+    @render()
+    this

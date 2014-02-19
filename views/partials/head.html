@@ -22,16 +22,9 @@
     <textarea name="body" class="form-control" rows="3"><%= body %></textarea>
 </script>
 
-
-<script id="GPAHead" type="text/html">
-    <p>Select your grades and corresponding credits.</p>
-    <form method="post" action="/gpa">
-</script>
-
-
 <script id="OneClass" type="text/html">
     <label>Grade:
-        <select name="gdfg" id="fourthG">
+        <select name="grade" id="grade">
             <option value="0" selected="selected">none</option>
             <option value="A">A</option>
             <option value="A-">A-</option>
@@ -46,7 +39,7 @@
             <option value="F">F</option>
         </select></label>
     <label>Credits:
-        <select name="fourth" id="fourth">
+        <select name="credits" id="credits">
             <option value="0" selected="selected">none</option>
             <option>1</option>
             <option>2</option>
@@ -57,9 +50,9 @@
     </label>
 </script>
 
-
-<script id="GPAFoot" type="text/html">
-    <br/><br/>
-    <input type="submit" id="gpaCalc" value="Calculate GPA"/>
-    <br/><br/></form>
+<script id="GPAbuttons" type="text/html">
+    <input type="button" id="gpaCalc" value="Calculate GPA"/>
+    <button class="AddRow">Add Class</button>
 </script>
+
+
