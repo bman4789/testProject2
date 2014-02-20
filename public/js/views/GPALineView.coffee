@@ -33,4 +33,3 @@ class window.GPALineView extends Backbone.View
       error: ->
         console.log 'error'
     @render()
-    this
