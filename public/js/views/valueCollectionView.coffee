@@ -18,15 +18,16 @@ class window.valueCollectionView extends Backbone.View
     this
 
   addRow: ->
-    console.log 'some text'
+    console.log 'addRow method'
     view = new GPALineView(model: new value())
     @collection.add view
     $('#GPADropDowns').append view.el
+    console.log 'saving...'
+    view.saveSection
     this
 
   calculateGPA: ->
     console.log 'calculating GPA'
-    sendToDB
     #makeGPA
 
   sendToDB: ->

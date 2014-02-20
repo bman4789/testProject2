@@ -12,7 +12,6 @@ exports.findAll = (req, res) ->
   Section.find (err, items) ->
     res.send items
 
-
 exports.create = (req, res) ->
   newSection = new Section req.body
   console.log 'created section ' + newSection.title
@@ -35,7 +34,6 @@ exports.edit = (req, res) ->
     #console.log 'The raw response from Mongo was ', raw
     res.send(section)
   )
-
 
 
 populateDB = ->
@@ -74,8 +72,6 @@ createAndAdd = (sec)->
   newSection = new Section(sec)
   newSection.save()
 
-
-
 ClassGrade.count({},(err, c) ->
   console.log err if err
   if c == 0
@@ -92,19 +88,19 @@ populateGPA = ->
   newPage = [
     {
       grade: "0"
-      credits: 0
+      credits: "0"
     },
     {
       grade: "0"
-      credits: 0
+      credits: "0"
     },
     {
       grade: "0"
-      credits: 0
+      credits: "0"
     },
     {
       grade: "0"
-      credits: 0
+      credits: "0"
     }
   ]
   createAndAddGPA things for things in newPage
@@ -113,12 +109,19 @@ createAndAddGPA = (sec)->
   newSection = new ClassGrade(sec)
   newSection.save()
 
+exports.createClass = (req, res) ->
+  newClass = new ClassGrade req.body
+  console.log 'created class with grade: ' + newClass.grade + ', credits of: ' + newClass.credits
+  newClass.save()
+  res.send()
+
 exports.editGPA = (req, res) ->
   section = req.body
+  console.log section
   delete section._id
   #console.log req
   id = req.params.id
-  value.update({ _id: id }, { $set: section }, (err, numAffected, raw) ->
+  ClassGrade.update({ _id: id }, { $set: section }, (err, numAffected, raw) ->
     console.log err if err
     console.log 'The number of updated documents was %d', numAffected
     #console.log 'The raw response from Mongo was ', raw
