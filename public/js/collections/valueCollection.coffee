@@ -1,3 +1,3 @@
-class window.valueCollection extends Backbone.Collection
+class window.ValueCollection extends Backbone.Collection
   model: window.value
   url: '/allGPAs'

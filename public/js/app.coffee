@@ -9,24 +9,24 @@ class AppRouter extends Backbone.Router
 
   gpa: ->
     console.log 'inside gpa'
-    coll = new window.valueCollection()
-    console.log 'line 13'
+    coll = new window.ValueCollection()
+    console.log coll
     coll.fetch
       success: ->
         console.log "in success"
         $('#GPAContent').append new window.valueCollectionView(collection: coll).$el
-      error: ->
-        console.log "error"
+        return
+    console.log coll
     return
 
   index: ->
     console.log 'inside index'
     sectionList = new window.SectionCollection()
+    console.log sectionList
     sectionList.fetch success: ->
       $('#content').html new window.SectionCollectionView(collection: sectionList).$el
       $('#bs-example-navbar-collapse-1').html new window.NavbarView(collection: sectionList).$el
       return
-
     return
 
 app = new AppRouter()

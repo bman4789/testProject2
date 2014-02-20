@@ -27,7 +27,7 @@ class window.valueCollectionView extends Backbone.View
   calculateGPA: ->
     console.log 'calculating GPA'
     sendToDB
-    makeGPA
+    #makeGPA
 
   sendToDB: ->
     console.log 'saving...'

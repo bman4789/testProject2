@@ -91,19 +91,19 @@ exports.findAllClasses = (req, res) ->
 populateGPA = ->
   newPage = [
     {
-      grade: '0'
+      grade: "0"
       credits: 0
     },
     {
-      grade: '0'
+      grade: "0"
       credits: 0
     },
     {
-      grade: '0'
+      grade: "0"
       credits: 0
     },
     {
-      grade: '0'
+      grade: "0"
       credits: 0
     }
   ]
@@ -112,3 +112,15 @@ populateGPA = ->
 createAndAddGPA = (sec)->
   newSection = new ClassGrade(sec)
   newSection.save()
+
+exports.editGPA = (req, res) ->
+  section = req.body
+  delete section._id
+  #console.log req
+  id = req.params.id
+  value.update({ _id: id }, { $set: section }, (err, numAffected, raw) ->
+    console.log err if err
+    console.log 'The number of updated documents was %d', numAffected
+    #console.log 'The raw response from Mongo was ', raw
+    res.send(section)
+  )
