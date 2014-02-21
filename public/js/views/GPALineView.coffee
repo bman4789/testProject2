@@ -4,8 +4,9 @@ class window.GPALineView extends Backbone.View
   saveGPATemplate : _.template $('#GPASave').html()
   events:
     'change': 'change'
-    'click button.edit': 'editSection'
-    'click button.save': 'saveSection'
+    'click button.edit': 'editClass'
+    'click button.save': 'saveClass'
+    'click button.deleteClass': 'deleteClass'
 
 
   initialize: ->
@@ -21,11 +22,11 @@ class window.GPALineView extends Backbone.View
     change[event.target.name] = event.target.value #uses name attribute from html
     @model.set(change)
 
-  editSection: ->
+  editClass: ->
     @$el.html @saveGPATemplate(@model.toJSON())
     this
 
-  saveSection: ->
+  saveClass: ->
     console.log 'saving...'
     @model.save {},
       success: ->
@@ -33,3 +34,13 @@ class window.GPALineView extends Backbone.View
       error: ->
         console.log 'error'
     @render()
+
+  deleteClass: ->
+    console.log 'deleting...'
+    @$el.fadeOut()
+    @model.destroy
+      success: ->
+        console.log 'Section deleted'
+      error: ->
+        console.log 'error deleting section'
+        @$el.show()

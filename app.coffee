@@ -5,20 +5,14 @@ classes = require './routes/gpa'
 http = require 'http'
 path = require 'path'
 mongoose = require 'mongoose'
-#models = require './schemas/schemas'
 app = express()
 
 #connect to database
-# ./mongodb/bin/mongod --dbpath ~/WebstormProjects/testProject2/db/
 mongoose.connect 'mongodb://localhost/test'
 db = mongoose.connection
 db.on 'error', console.error.bind(console, 'connection error:')
 db.once 'open', ->
   console.log 'DB connection opened'
-
-
-#nodeInfo = new models.Section {title: 'Node.js', link: 'http://nodejs.org/', body: 'blah', category: 'main'}
-#nodeInfo.save()
 
 
 #set main layout
@@ -45,7 +39,6 @@ app.configure ->
   app.use express.session()
   app.use app.router
 
-  #app.use(require('less-middleware')({ src: __dirname + '/public' }));
   app.use express.static(path.join(__dirname, 'public'))
   app.use express.static(path.join(__dirname, 'bower_components'))
 
@@ -58,9 +51,11 @@ app.get '/section/:id', section.getById
 app.post '/section', section.create
 app.get '/sections', section.findAll
 app.put '/section/:id', section.edit
+app.get '/aGPA/:id', classes.getClassById
 app.post '/aGPA', classes.createClass
 app.get '/allGPAs', classes.findAllClasses
 app.put '/aGPA/:id', classes.editGPA
+
 
 
 http.createServer(app).listen app.get('port'), ->

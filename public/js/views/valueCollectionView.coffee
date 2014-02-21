@@ -2,6 +2,7 @@ class window.valueCollectionView extends Backbone.View
   template: _.template $('#GPAbuttons').html()
   events:
     'click button.addRow': 'addRow'
+    'click button.wipeDB': 'wipeDB'
 
   initialize: ->
     @render()
@@ -9,7 +10,6 @@ class window.valueCollectionView extends Backbone.View
   render: ->
     console.log 'in render'
     _.each @collection.models, ((item) ->
-      console.log item
       view = new GPALineView(model: item)
       $('#GPADropDowns').append view.el
       return
@@ -19,24 +19,20 @@ class window.valueCollectionView extends Backbone.View
 
   addRow: ->
     console.log 'addRow method'
-    view = new GPALineView(model: new value())
-    @collection.add view
+    newClass = new value({grade: '0', credits: '0'})
+    newClass.save {},
+      success: ->
+        console.log 'created'
+      error: ->
+        console.log 'in error'
+    view = new GPALineView(model: newClass)
     $('#GPADropDowns').append view.el
-    console.log 'saving...'
-    view.saveSection
+    console.log this
     this
 
   calculateGPA: ->
     console.log 'calculating GPA'
     #makeGPA
-
-  sendToDB: ->
-    console.log 'saving...'
-    @model.save {},
-      success: ->
-        console.log 'saved'
-      error: ->
-        console.log 'error'
 
   makeGPA = (grades, credits) ->
     gradePoint = 0
@@ -60,3 +56,6 @@ class window.valueCollectionView extends Backbone.View
       when grade is 'D' then 1.0
       when grade is 'F' then 0.0
       else 0
+
+  wipeDB = ->
+
