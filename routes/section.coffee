@@ -106,8 +106,8 @@ populateGPA = ->
   createAndAddGPA things for things in newPage
 
 createAndAddGPA = (sec)->
-  newSection = new ClassGrade(sec)
-  newSection.save()
+  newClass = new ClassGrade(sec)
+  newClass.save()
 
 exports.createClass = (req, res) ->
   newClass = new ClassGrade req.body
@@ -116,14 +116,14 @@ exports.createClass = (req, res) ->
   res.send()
 
 exports.editGPA = (req, res) ->
-  section = req.body
-  console.log section
-  delete section._id
+  gpaVar = req.body
+  console.log gpaVar
+  delete gpaVar._id
   #console.log req
   id = req.params.id
-  ClassGrade.update({ _id: id }, { $set: section }, (err, numAffected, raw) ->
+  ClassGrade.update({ _id: id }, { $set: gpaVar }, (err, numAffected, raw) ->
     console.log err if err
     console.log 'The number of updated documents was %d', numAffected
     #console.log 'The raw response from Mongo was ', raw
-    res.send(section)
+    res.send(gpaVar)
   )
