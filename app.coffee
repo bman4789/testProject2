@@ -1,6 +1,7 @@
 express = require 'express'
 routes = require './routes'
 section = require './routes/section'
+classes = require './routes/gpa'
 http = require 'http'
 path = require 'path'
 mongoose = require 'mongoose'
@@ -57,9 +58,9 @@ app.get '/section/:id', section.getById
 app.post '/section', section.create
 app.get '/sections', section.findAll
 app.put '/section/:id', section.edit
-app.post '/aGPA', section.createClass
-app.get '/allGPAs', section.findAllClasses
-app.put '/aGPA/:id', section.editGPA
+app.post '/aGPA', classes.createClass
+app.get '/allGPAs', classes.findAllClasses
+app.put '/aGPA/:id', classes.editGPA
 
 
 http.createServer(app).listen app.get('port'), ->
