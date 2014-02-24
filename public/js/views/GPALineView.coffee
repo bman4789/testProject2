@@ -33,7 +33,6 @@ class window.GPALineView extends Backbone.View
         console.log 'saved'
       error: ->
         console.log 'error'
-
     @render()
 
   deleteClass: ->
@@ -45,4 +44,3 @@ class window.GPALineView extends Backbone.View
       error: ->
         console.log 'error deleting section'
         @$el.show()
-    removeClass()

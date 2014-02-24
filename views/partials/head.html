@@ -23,9 +23,13 @@
 </script>
 
 <script id="GPAEdit" type="text/html">
-    <p>Grade: <%= grade %>  Credits: <%= credits %></p>
-    <button class="edit">Edit</button>
-    <button class="deleteClass">Remove Class</button>
+    <p>
+        Grade: <%= grade %>  Credits: <%= credits %>
+        <span style="padding-left: 10px;">
+        <button class="edit btn btn-primary btn-sm">Edit</button>
+        <button class="deleteClass btn btn-danger btn-sm">Delete Class</button>
+        </span>
+    </p>
 </script>
 
 
@@ -55,12 +59,12 @@
             <option>5</option>
         </select>
     </label>
-    <button class="save">Save</button>
-    <button class="deleteClass">Delete Class</button>
+    <button class="save btn btn-primary btn-sm">Save</button>
+    <button class="deleteClass btn btn-danger btn-sm">Delete Class</button>
 </script>
 
 <script id="GPAbuttons" type="text/html">
-    <button class="addRow">Add Class</button>
-    <button class="calcgpa">GPA It</button>
+    <button class="addRow btn btn-success btn-sm">Add Class</button>
+    <button class="calcgpa btn btn-info btn-sm">GPA It</button>
     </br></br><p id="GPAResult"></p>
 </script>
