@@ -41,7 +41,7 @@ exports.createClass = (req, res) ->
   newClass = new ClassGrade req.body
   console.log 'created class with grade: ' + newClass.grade + ', credits of: ' + newClass.credits
   newClass.save()
-  res.send()
+  res.send(newClass)
 
 exports.editGPA = (req, res) ->
   gpaVar = req.body

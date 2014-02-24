@@ -16,15 +16,15 @@ class window.GPALineView extends Backbone.View
     @$el.html @editGPATemplate(@model.toJSON())
     this
 
+  editClass: ->
+    @$el.html @saveGPATemplate(@model.toJSON())
+    this
+
   change: (event) ->
     console.log 'changed'
     change = {}
     change[event.target.name] = event.target.value #uses name attribute from html
     @model.set(change)
-
-  editClass: ->
-    @$el.html @saveGPATemplate(@model.toJSON())
-    this
 
   saveClass: ->
     console.log 'saving...'
@@ -33,6 +33,7 @@ class window.GPALineView extends Backbone.View
         console.log 'saved'
       error: ->
         console.log 'error'
+
     @render()
 
   deleteClass: ->

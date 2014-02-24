@@ -3,6 +3,7 @@ class window.valueCollectionView extends Backbone.View
   events:
     'click button.addRow': 'addRow'
     'click button.wipeDB': 'wipeDB'
+    'click button.calcgpa': 'calculateGPA'
 
   initialize: ->
     @render()
@@ -11,6 +12,7 @@ class window.valueCollectionView extends Backbone.View
     console.log 'in render'
     _.each @collection.models, ((item) ->
       view = new GPALineView(model: item)
+#      @listenTo item, 'click button.save', @calculateGPA
       $('#GPADropDowns').append view.el
       return
     ), this
@@ -25,22 +27,28 @@ class window.valueCollectionView extends Backbone.View
         console.log 'created'
       error: ->
         console.log 'in error'
-    view = new GPALineView(model: newClass)
-    $('#GPADropDowns').append view.el
-    console.log this
+      @collection.add newClass
+      newView = new GPALineView(model: newClass)
+      $('#GPADropDowns').append newView.el
     this
 
   calculateGPA: ->
     console.log 'calculating GPA'
-    #makeGPA
+    grades = []
+    credits = []
+    _.each @collection.models, ((item) ->
+      grades.push item.get "grade"
+      credits.push item.get "credits"
+    )
+    $('#GPAResult').append makeGPA(grades, credits).el
 
   makeGPA = (grades, credits) ->
     gradePoint = 0
     for i in [0..grades.length - 1]
-      gradePoint += (gradeToFloat(grades[i]) * credits[i])
+      gradePoint += (gradeToFloat(grades[i]) * parseInt(credits[i]))
     #reduce is for summing an array
     #multiplied by 1000 and math.round in order to get 3 decimal places
-    return Math.round((gradePoint / (credits.reduce (t, s) -> t + s))*1000)/1000
+    return Math.round((gradePoint / (credits.reduce (t, s) -> parseInt(t) + parseInt(s)))*1000)/1000
 
   gradeToFloat = (grade) -> #returns the corresponding GPA
     retFlo = switch
@@ -56,6 +64,3 @@ class window.valueCollectionView extends Backbone.View
       when grade is 'D' then 1.0
       when grade is 'F' then 0.0
       else 0
-
-  wipeDB = ->
-
