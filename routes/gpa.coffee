@@ -55,10 +55,13 @@ exports.editGPA = (req, res) ->
     res.send(gpaVar)
   )
 
-exports.removeClass = (req, res) ->
-  gpaVar = req.body
-  console.log gpaVar
-  delete gpaVar._id
+exports.delete = (req, res) ->
+  id = req.params.id
+  ClassGrade.remove({_id: id}, (err, numAffected) ->
+    console.log err if err
+    console.log '%d document deleted', numAffected
+    res.send '200'
+  )
 
 exports.getClassById = (req, res) ->
   console.log 'in get'

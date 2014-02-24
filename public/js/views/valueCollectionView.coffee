@@ -2,7 +2,6 @@ class window.valueCollectionView extends Backbone.View
   template: _.template $('#GPAbuttons').html()
   events:
     'click button.addRow': 'addRow'
-    'click button.wipeDB': 'wipeDB'
     'click button.calcgpa': 'calculateGPA'
 
   initialize: ->
