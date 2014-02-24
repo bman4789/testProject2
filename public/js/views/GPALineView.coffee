@@ -45,3 +45,4 @@ class window.GPALineView extends Backbone.View
       error: ->
         console.log 'error deleting section'
         @$el.show()
+    removeClass()

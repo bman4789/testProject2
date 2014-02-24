@@ -47,7 +47,6 @@ exports.editGPA = (req, res) ->
   gpaVar = req.body
   console.log gpaVar
   delete gpaVar._id
-  #console.log req
   id = req.params.id
   ClassGrade.update({ _id: id }, { $set: gpaVar }, (err, numAffected, raw) ->
     console.log err if err
@@ -55,6 +54,11 @@ exports.editGPA = (req, res) ->
     #console.log 'The raw response from Mongo was ', raw
     res.send(gpaVar)
   )
+
+exports.removeClass = (req, res) ->
+  gpaVar = req.body
+  console.log gpaVar
+  delete gpaVar._id
 
 exports.getClassById = (req, res) ->
   console.log 'in get'

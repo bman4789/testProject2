@@ -40,7 +40,7 @@ class window.valueCollectionView extends Backbone.View
       grades.push item.get "grade"
       credits.push item.get "credits"
     )
-    $('#GPAResult').append makeGPA(grades, credits).el
+    document.getElementById('GPAResult').innerHTML="The GPA is: " + makeGPA(grades, credits)
 
   makeGPA = (grades, credits) ->
     gradePoint = 0
