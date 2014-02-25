@@ -48,10 +48,9 @@ exports.editGPA = (req, res) ->
   console.log gpaVar
   delete gpaVar._id
   id = req.params.id
-  ClassGrade.update({ _id: id }, { $set: gpaVar }, (err, numAffected, raw) ->
+  ClassGrade.update({ _id: id }, { $set: gpaVar }, (err, numAffected) ->
     console.log err if err
     console.log 'The number of updated documents was %d', numAffected
-    #console.log 'The raw response from Mongo was ', raw
     res.send(gpaVar)
   )
 
