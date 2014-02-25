@@ -54,6 +54,19 @@ class window.GPALineView extends Backbone.View
     @model.destroy
       success: ->
         console.log 'Section deleted'
+        console.log 'calculating GPA'
+        valueList = new window.ValueCollection()
+        grades = []
+        credits = []
+        i = 0
+        valueList.fetch success: ->
+          console.log "in success"
+          _.each valueList.models, ((item) ->
+            grades[i] = item.get "grade"
+            credits[i] = item.get "credits"
+            i++
+          )
+          document.getElementById('GPAResult').innerHTML="The GPA is: " + makeGPA(grades, credits)
       error: ->
         console.log 'error deleting section'
         @$el.show()
