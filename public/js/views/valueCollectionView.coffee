@@ -17,7 +17,6 @@ class window.valueCollectionView extends Backbone.View
     this
 
   addClass: ->
-    console.log 'addClass method'
     newClass = new value({grade: '0', credits: '0'})
     newClass.save {},
       success: ->

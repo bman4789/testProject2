@@ -45,7 +45,6 @@ exports.createClass = (req, res) ->
 
 exports.editGPA = (req, res) ->
   gpaVar = req.body
-  console.log gpaVar
   delete gpaVar._id
   id = req.params.id
   ClassGrade.update({ _id: id }, { $set: gpaVar }, (err, numAffected) ->
@@ -54,7 +53,7 @@ exports.editGPA = (req, res) ->
     res.send(gpaVar)
   )
 
-exports.delete = (req, res) ->
+exports.deleteClass = (req, res) ->
   id = req.params.id
   ClassGrade.remove({_id: id}, (err, numAffected) ->
     console.log err if err
@@ -63,7 +62,6 @@ exports.delete = (req, res) ->
   )
 
 exports.getClassById = (req, res) ->
-  console.log 'in get'
   id = req.route.params['id']
   ClassGrade.findById id, (err, result) ->
     res.send result

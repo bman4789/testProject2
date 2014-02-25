@@ -55,7 +55,7 @@ app.get '/aGPA/:id', classes.getClassById
 app.post '/aGPA', classes.createClass
 app.get '/allGPAs', classes.findAllClasses
 app.put '/aGPA/:id', classes.editGPA
-app.delete '/aGPA/:id', classes.delete
+app.delete '/aGPA/:id', classes.deleteClass
 
 
 

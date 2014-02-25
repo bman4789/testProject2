@@ -30,14 +30,12 @@ class window.GPALineView extends Backbone.View
     console.log 'saving...'
     @model.save {},
       success: ->
-        console.log 'saved'
-        console.log 'calculating GPA'
+        console.log 'saved, calculating GPA'
         valueList = new window.ValueCollection()
         grades = []
         credits = []
         i = 0
         valueList.fetch success: ->
-          console.log "in success"
           _.each valueList.models, ((item) ->
             grades[i] = item.get "grade"
             credits[i] = item.get "credits"
@@ -53,14 +51,12 @@ class window.GPALineView extends Backbone.View
     @$el.fadeOut()
     @model.destroy
       success: ->
-        console.log 'Section deleted'
-        console.log 'calculating GPA'
+        console.log 'Section deleted, calculating GPA'
         valueList = new window.ValueCollection()
         grades = []
         credits = []
         i = 0
         valueList.fetch success: ->
-          console.log "in success"
           _.each valueList.models, ((item) ->
             grades[i] = item.get "grade"
             credits[i] = item.get "credits"

@@ -8,12 +8,10 @@ class AppRouter extends Backbone.Router
     'gpa': 'gpa'
 
   gpa: ->
-    console.log 'inside gpa'
     coll = new window.ValueCollection()
     console.log coll
     coll.fetch
       success: ->
-        console.log "in success"
         $('#GPAContent').append new window.valueCollectionView(collection: coll).$el
         return
     console.log coll
